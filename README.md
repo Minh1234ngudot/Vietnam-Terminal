@@ -1,5 +1,8 @@
 # 🇻🇳 Vietnam Terminal Setup
 
+### Bạn Muốn Terminal Của Bạn Như Thế Này:
+<img width="1248" height="674" alt="image" src="https://github.com/user-attachments/assets/dcdae052-8a2d-4409-b432-dcab061ce3ab" />
+
 > Terminal setup với **Oh My Posh** theme Việt Nam — đỏ & vàng chuẩn cờ đỏ sao vàng.
 
 ![OS](https://img.shields.io/badge/OS-Windows%2010%2F11-blue?style=flat-square&logo=windows)
