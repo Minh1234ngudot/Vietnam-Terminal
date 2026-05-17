@@ -2,325 +2,139 @@
 
 > Terminal setup với **Oh My Posh** theme Việt Nam — đỏ & vàng chuẩn cờ đỏ sao vàng.
 
-![Preview](https://img.shields.io/badge/OS-Windows%2011-blue?style=flat-square&logo=windows)
+![OS](https://img.shields.io/badge/OS-Windows%2010%2F11-blue?style=flat-square&logo=windows)
 ![OhMyPosh](https://img.shields.io/badge/Oh%20My%20Posh-v24%2B-DA251D?style=flat-square)
 ![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-FFCD00?style=flat-square&logo=powershell)
+
+---
+
+## 📥 Tải file
+
+Vào trang repo này, tải về các file sau:
+
+| File | Mô tả |
+|---|---|
+| `vietnam.omp.json` | Theme Oh My Posh màu đỏ-vàng VN |
+| `config.jsonc` | Config Fastfetch |
+| `vietnam_ascii.txt` | ASCII art logo cho Fastfetch |
+| `settings.json` | Windows Terminal settings |
+
+> **Cách tải:** Click vào tên file → nhấn nút **Download raw file** (biểu tượng tải xuống góc phải) → lưu vào thư mục `Downloads`.
 
 ---
 
 ## 📋 Yêu cầu
 
 - Windows 10/11
-- Windows Terminal
+- [Windows Terminal](https://aka.ms/terminal) (tải miễn phí trên Microsoft Store)
 - PowerShell 5.1+
 - Kết nối Internet
 
 ---
 
-## 🚀 Cài đặt
+## 🚀 Cài đặt từng bước
 
 ### Bước 1 — Cài Oh My Posh
 
-Mở PowerShell và chạy:
+Mở **PowerShell** và chạy lệnh sau:
 
 ```powershell
 winget install JanDeDobbeleer.OhMyPosh -s winget
 ```
 
-Sau khi cài xong, **restart PowerShell**.
+✅ Sau khi xong → **đóng và mở lại PowerShell**.
 
 ---
 
 ### Bước 2 — Cài Nerd Font
 
-Oh My Posh cần **Nerd Font** để hiển thị icon đúng. Tải font **JetBrainsMono Nerd Font**:
+Oh My Posh cần **Nerd Font** để hiển thị icon đúng. Chạy lệnh:
 
 ```powershell
 oh-my-posh font install JetBrainsMono
 ```
 
-Sau đó vào **Windows Terminal → Settings → Defaults → Font face** và chọn:
+Sau đó vào **Windows Terminal → Settings → Defaults → Appearance → Font face** và chọn:
+
 ```
 JetBrainsMono Nerd Font Mono
 ```
 
----
-
-### Bước 3 — Tải file theme Vietnam
-
-Tải file `vietnam.omp.json` từ repo này và đặt vào thư mục Downloads:
-```
-C:\Users\<tên_của_bạn>\Downloads\vietnam.omp.json
-```
+✅ Nhấn **Save**.
 
 ---
 
-### Bước 4 — Cài PSReadLine (fix lỗi key handler)
+### Bước 3 — Cài PSReadLine (fix lỗi)
 
 ```powershell
 Install-Module PSReadLine -Force -SkipPublisherCheck -Scope CurrentUser
 ```
 
-Restart PowerShell sau khi cài xong.
+✅ Sau khi xong → **đóng và mở lại PowerShell**.
 
 ---
 
-### Bước 5 — Cấu hình PowerShell Profile
+### Bước 4 — Áp dụng theme Vietnam
 
-Mở file profile:
+Mở file PowerShell Profile:
 
 ```powershell
 notepad $PROFILE
 ```
 
-> Nếu file chưa tồn tại, tạo mới:
+> ⚠️ Nếu báo lỗi file không tồn tại, chạy lệnh này trước:
 > ```powershell
 > New-Item -Path $PROFILE -Type File -Force
 > ```
 
-Thêm nội dung sau vào file (thay `YourUsername` bằng username của bạn):
+**Xóa toàn bộ nội dung cũ** và dán đoạn sau vào (thay `YourUsername` bằng tên user của bạn):
 
 ```powershell
 Set-Location "C:\Users\YourUsername"
 oh-my-posh init pwsh --config "C:\Users\YourUsername\Downloads\vietnam.omp.json" | Invoke-Expression
+Clear-Host
+fastfetch
 ```
 
-Lưu file và **restart PowerShell**.
+✅ Nhấn **Ctrl+S** để lưu → đóng Notepad → **restart PowerShell**.
 
 ---
 
-### Bước 6 — (Tùy chọn) Cài Fastfetch
+### Bước 5 — (Tùy chọn) Cài Fastfetch
 
-Fastfetch hiển thị thông tin hệ thống khi mở terminal:
+Fastfetch hiển thị thông tin máy tính mỗi khi mở terminal.
 
+**Cài Fastfetch:**
 ```powershell
 winget install fastfetch-cli.fastfetch
 ```
 
-Tạo thư mục config:
-
+**Tạo thư mục config:**
 ```powershell
 mkdir "$env:USERPROFILE\.config\fastfetch"
 ```
 
-Copy file config vào:
-
+**Copy file config vào:**
 ```powershell
 copy "C:\Users\YourUsername\Downloads\config.jsonc" "$env:USERPROFILE\.config\fastfetch\"
 copy "C:\Users\YourUsername\Downloads\vietnam_ascii.txt" "$env:USERPROFILE\.config\fastfetch\"
 ```
 
+✅ Restart PowerShell là xong.
+
 ---
 
-### Bước 7 — (Tùy chọn) Vietnam Color Scheme cho Windows Terminal
+### Bước 6 — (Tùy chọn) Đổi màu Windows Terminal sang Vietnam
 
-Mở Windows Terminal Settings (`Ctrl+,`) → **nhấn vào biểu tượng Bánh răng để Open JSON file** nhấn Ctrl + A và dán code ở dưới vào file settings.json đã mở trước đó:
+1. Mở **Windows Terminal**
+2. Nhấn `Ctrl+,` để mở Settings
+3. Góc dưới bên trái → nhấn **biểu tượng bánh răng ⚙️** (Open JSON file)
+4. Nhấn `Ctrl+A` để chọn tất cả → **xóa đi**
+5. Dán toàn bộ nội dung file `settings.json` đã tải vào
+6. Nhấn `Ctrl+S` để lưu
 
-```json
-{
-    "$help": "https://aka.ms/terminal-documentation",
-    "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
-    [
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "id": "User.copy.644BA8F2"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "id": "User.splitPane.A6751878"
-        }
-    ],
-    "alwaysOnTop": false,
-    "copyFormatting": "none",
-    "copyOnSelect": false,
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "keybindings": 
-    [
-        {
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+c"
-        },
-        {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
-        }
-    ],
-    "newTabMenu": 
-    [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
-    "profiles": 
-    {
-        "defaults": 
-        {
-            "colorScheme": "Vietnam",
-            "cursorShape": "filledBox",
-            "cursorColor": "#FFCD00",
-            "experimental.retroTerminalEffect": false,
-            "font": 
-            {
-                "builtinGlyphs": true,
-                "cellHeight": "1.2",
-                "colorGlyphs": true,
-                "face": "JetBrainsMono Nerd Font Mono",
-                "size": 10,
-                "weight": "extra-black"
-            },
-            "intenseTextStyle": "all",
-            "opacity": 85,
-            "padding": "8",
-            "useAcrylic": true
-        },
-        "list": 
-        [
-            {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell"
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "Command Prompt"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            }
-        ]
-    },
-    "schemes": 
-    [
-        {
-            "name": "Vietnam",
-            "background": "#1A0A0A",
-            "foreground": "#F5E6C8",
-            "black": "#2A1010",
-            "red": "#DA251D",
-            "green": "#A6E3A1",
-            "yellow": "#FFCD00",
-            "blue": "#89B4FA",
-            "purple": "#F5C2E7",
-            "cyan": "#94E2D5",
-            "white": "#F5E6C8",
-            "brightBlack": "#5C2A2A",
-            "brightRed": "#FF4136",
-            "brightGreen": "#69FF94",
-            "brightYellow": "#FFE033",
-            "brightBlue": "#B4D4FF",
-            "brightPurple": "#FF92DF",
-            "brightCyan": "#A4FFFF",
-            "brightWhite": "#FFFFFF",
-            "cursorColor": "#FFCD00",
-            "selectionBackground": "#8B1A1A"
-        },
-        {
-            "background": "#1E1E2E",
-            "black": "#45475A",
-            "blue": "#89B4FA",
-            "brightBlack": "#585B70",
-            "brightBlue": "#89B4FA",
-            "brightCyan": "#94E2D5",
-            "brightGreen": "#A6E3A1",
-            "brightPurple": "#F5C2E7",
-            "brightRed": "#F38BA8",
-            "brightWhite": "#A6ADC8",
-            "brightYellow": "#F9E2AF",
-            "cursorColor": "#F5E0DC",
-            "cyan": "#94E2D5",
-            "foreground": "#CDD6F4",
-            "green": "#A6E3A1",
-            "name": "Catppuccin Mocha",
-            "purple": "#F5C2E7",
-            "red": "#F38BA8",
-            "selectionBackground": "#585B70",
-            "white": "#BAC2DE",
-            "yellow": "#F9E2AF"
-        },
-        {
-            "background": "#000000",
-            "black": "#0C0C0C",
-            "blue": "#0037DA",
-            "brightBlack": "#767676",
-            "brightBlue": "#3B78FF",
-            "brightCyan": "#61D6D6",
-            "brightGreen": "#16C60C",
-            "brightPurple": "#B4009E",
-            "brightRed": "#E74856",
-            "brightWhite": "#F2F2F2",
-            "brightYellow": "#F9F1A5",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#3A96DD",
-            "foreground": "#FFFFFF",
-            "green": "#13A10E",
-            "name": "Color Scheme 15",
-            "purple": "#881798",
-            "red": "#C50F1F",
-            "selectionBackground": "#FFFFFF",
-            "white": "#CCCCCC",
-            "yellow": "#C19C00"
-        },
-        {
-            "background": "#282A36",
-            "black": "#21222C",
-            "blue": "#BD93F9",
-            "brightBlack": "#6272A4",
-            "brightBlue": "#D6ACFF",
-            "brightCyan": "#A4FFFF",
-            "brightGreen": "#69FF94",
-            "brightPurple": "#FF92DF",
-            "brightRed": "#FF6E6E",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#FFFFA5",
-            "cursorColor": "#F8F8F2",
-            "cyan": "#8BE9FD",
-            "foreground": "#F8F8F2",
-            "green": "#50FA7B",
-            "name": "Dracula",
-            "purple": "#FF79C6",
-            "red": "#FF5555",
-            "selectionBackground": "#44475A",
-            "white": "#F8F8F2",
-            "yellow": "#F1FA8C"
-        }
-    ],
-    "tabWidthMode": "titleLength",
-    "themes": [],
-    "useAcrylicInTabRow": true
-}
-```
+✅ Đóng và mở lại Windows Terminal.
+
 ---
 
 ## 🎨 Màu sắc theme
@@ -342,8 +156,6 @@ Mở Windows Terminal Settings (`Ctrl+,`) → **nhấn vào biểu tượng Bán
 [os] [username]                                              ♥♥♥ Việt Nam
 ```
 
-### Các segment trong prompt
-
 | Segment | Mô tả |
 |---|---|
 | 📁 Path | Đường dẫn hiện tại, home hiện `~` |
@@ -351,7 +163,7 @@ Mở Windows Terminal Settings (`Ctrl+,`) → **nhấn vào biểu tượng Bán
 | ✅ Status | `♥` nếu OK, `💔` nếu lỗi |
 | 🌐 Network | Icon kết nối mạng |
 | 🔋 Battery | % pin + trạng thái sạc |
-| ⏱ Exec time | Thời gian lệnh vừa chạy |
+| ⏱ Exec Time | Thời gian lệnh vừa chạy |
 | 📅 Time | Ngày + giờ |
 | 💻 OS | Icon hệ điều hành |
 | 👤 Username | Tên user (+ SSH icon nếu remote) |
@@ -360,28 +172,17 @@ Mở Windows Terminal Settings (`Ctrl+,`) → **nhấn vào biểu tượng Bán
 
 ## ❓ Troubleshooting
 
-**Icon bị lỗi/hiện ký tự lạ?**
-→ Chưa cài Nerd Font hoặc chưa set font trong Windows Terminal.
+**❌ Icon hiện ký tự lạ thay vì icon đẹp?**
+→ Chưa cài hoặc chưa chọn đúng Nerd Font trong Windows Terminal. Làm lại Bước 2.
 
-**Lỗi `Get-PSReadLineKeyHandler`?**
+**❌ Lỗi `Get-PSReadLineKeyHandler` khi mở terminal?**
 → Chạy: `Install-Module PSReadLine -Force -SkipPublisherCheck -Scope CurrentUser`
 
-**Theme không load khi mở tab mới?**
-→ Kiểm tra `$PROFILE` đã có dòng `oh-my-posh init pwsh --config ...` chưa. Đảm bảo **không có 2 dòng** `oh-my-posh init`.
+**❌ Theme không load khi mở tab mới?**
+→ Kiểm tra file `$PROFILE` có đúng đường dẫn tới `vietnam.omp.json` chưa. Đảm bảo **chỉ có 1 dòng** `oh-my-posh init`.
 
-**Vẫn còn dòng `Loading personal and system profiles took...`?**
-→ Đảm bảo trong `$PROFILE` có dòng `Clear-Host` sau `oh-my-posh init`.
-
----
-
-## 📁 Files
-
-| File | Mô tả |
-|---|---|
-| `vietnam.omp.json` | Theme Oh My Posh màu đỏ-vàng VN |
-| `config.jsonc` | Config Fastfetch |
-| `vietnam_ascii.txt` | ASCII art logo cho Fastfetch |
-| `settings.json` | Windows Terminal settings |
+**❌ Vẫn thấy dòng `Loading personal and system profiles took...`?**
+→ Đảm bảo trong `$PROFILE` có dòng `Clear-Host` **sau** dòng `oh-my-posh init`.
 
 ---
 ---
@@ -392,317 +193,132 @@ Mở Windows Terminal Settings (`Ctrl+,`) → **nhấn vào biểu tượng Bán
 
 ---
 
+## 📥 Download Files
+
+Go to this repo and download the following files:
+
+| File | Description |
+|---|---|
+| `vietnam.omp.json` | Oh My Posh theme (red & yellow) |
+| `config.jsonc` | Fastfetch configuration |
+| `vietnam_ascii.txt` | ASCII art logo for Fastfetch |
+| `settings.json` | Windows Terminal settings |
+
+> **How to download:** Click the filename → click the **Download raw file** button (download icon, top right) → save to your `Downloads` folder.
+
+---
+
 ## 📋 Requirements
 
 - Windows 10/11
-- Windows Terminal
+- [Windows Terminal](https://aka.ms/terminal) (free on Microsoft Store)
 - PowerShell 5.1+
 - Internet connection
 
 ---
 
-## 🚀 Installation
+## 🚀 Step-by-Step Installation
 
 ### Step 1 — Install Oh My Posh
 
-Open PowerShell and run:
+Open **PowerShell** and run:
 
 ```powershell
 winget install JanDeDobbeleer.OhMyPosh -s winget
 ```
 
-Once installed, **restart PowerShell**.
+✅ When done → **close and reopen PowerShell**.
 
 ---
 
 ### Step 2 — Install a Nerd Font
 
-Oh My Posh requires a **Nerd Font** to render icons correctly. Install **JetBrainsMono Nerd Font**:
+Oh My Posh needs a **Nerd Font** to display icons correctly. Run:
 
 ```powershell
 oh-my-posh font install JetBrainsMono
 ```
 
-Then go to **Windows Terminal → Settings → Defaults → Font face** and set:
+Then go to **Windows Terminal → Settings → Defaults → Appearance → Font face** and select:
+
 ```
 JetBrainsMono Nerd Font Mono
 ```
 
----
-
-### Step 3 — Download the Vietnam Theme
-
-Download `vietnam.omp.json` from this repo and place it in your Downloads folder:
-```
-C:\Users\<your_username>\Downloads\vietnam.omp.json
-```
+✅ Click **Save**.
 
 ---
 
-### Step 4 — Fix PSReadLine Key Handler Errors
+### Step 3 — Fix PSReadLine Errors
 
 ```powershell
 Install-Module PSReadLine -Force -SkipPublisherCheck -Scope CurrentUser
 ```
 
-Restart PowerShell after installing.
+✅ When done → **close and reopen PowerShell**.
 
 ---
 
-### Step 5 — Configure Your PowerShell Profile
+### Step 4 — Apply the Vietnam Theme
 
-Open your profile file:
+Open your PowerShell Profile:
 
 ```powershell
 notepad $PROFILE
 ```
 
-> If the file does not exist yet, create it first:
+> ⚠️ If it says the file doesn't exist, run this first:
 > ```powershell
 > New-Item -Path $PROFILE -Type File -Force
 > ```
 
-Add the following (replace `YourUsername` with your actual username):
+**Clear all existing content** and paste the following (replace `YourUsername` with your Windows username):
 
 ```powershell
 Set-Location "C:\Users\YourUsername"
 oh-my-posh init pwsh --config "C:\Users\YourUsername\Downloads\vietnam.omp.json" | Invoke-Expression
+Clear-Host
+fastfetch
 ```
 
-Save the file and **restart PowerShell**.
+✅ Press **Ctrl+S** to save → close Notepad → **restart PowerShell**.
 
 ---
 
-### Step 6 — (Optional) Install Fastfetch
+### Step 5 — (Optional) Install Fastfetch
 
+Fastfetch displays system information every time you open a terminal.
+
+**Install Fastfetch:**
 ```powershell
 winget install fastfetch-cli.fastfetch
 ```
 
-Create the config directory:
-
+**Create the config folder:**
 ```powershell
 mkdir "$env:USERPROFILE\.config\fastfetch"
 ```
 
-Copy the config files:
-
+**Copy the config files:**
 ```powershell
 copy "C:\Users\YourUsername\Downloads\config.jsonc" "$env:USERPROFILE\.config\fastfetch\"
 copy "C:\Users\YourUsername\Downloads\vietnam_ascii.txt" "$env:USERPROFILE\.config\fastfetch\"
 ```
 
+✅ Restart PowerShell and you're done.
+
 ---
 
-### Step 7 — (Optional) Apply Vietnam Color Scheme in Windows Terminal
+### Step 6 — (Optional) Apply Vietnam Color Scheme in Windows Terminal
 
-Open Windows Terminal Settings (`Ctrl+,`) → **Click the gear icon to open the JSON file**, press Ctrl + A, and paste the code below into the previously opened settings.json file:
+1. Open **Windows Terminal**
+2. Press `Ctrl+,` to open Settings
+3. Bottom left corner → click the **gear icon ⚙️** (Open JSON file)
+4. Press `Ctrl+A` to select all → **delete it**
+5. Paste the entire contents of the downloaded `settings.json` file
+6. Press `Ctrl+S` to save
 
-```json
-{
-    "$help": "https://aka.ms/terminal-documentation",
-    "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
-    [
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "id": "User.copy.644BA8F2"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste"
-        },
-        {
-            "command": "find",
-            "id": "User.find"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "id": "User.splitPane.A6751878"
-        }
-    ],
-    "alwaysOnTop": false,
-    "copyFormatting": "none",
-    "copyOnSelect": false,
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-    "keybindings": 
-    [
-        {
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+c"
-        },
-        {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "id": "User.paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
-        }
-    ],
-    "newTabMenu": 
-    [
-        {
-            "type": "remainingProfiles"
-        }
-    ],
-    "profiles": 
-    {
-        "defaults": 
-        {
-            "colorScheme": "Vietnam",
-            "cursorShape": "filledBox",
-            "cursorColor": "#FFCD00",
-            "experimental.retroTerminalEffect": false,
-            "font": 
-            {
-                "builtinGlyphs": true,
-                "cellHeight": "1.2",
-                "colorGlyphs": true,
-                "face": "JetBrainsMono Nerd Font Mono",
-                "size": 10,
-                "weight": "extra-black"
-            },
-            "intenseTextStyle": "all",
-            "opacity": 85,
-            "padding": "8",
-            "useAcrylic": true
-        },
-        "list": 
-        [
-            {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "Windows PowerShell"
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "Command Prompt"
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": false,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            }
-        ]
-    },
-    "schemes": 
-    [
-        {
-            "name": "Vietnam",
-            "background": "#1A0A0A",
-            "foreground": "#F5E6C8",
-            "black": "#2A1010",
-            "red": "#DA251D",
-            "green": "#A6E3A1",
-            "yellow": "#FFCD00",
-            "blue": "#89B4FA",
-            "purple": "#F5C2E7",
-            "cyan": "#94E2D5",
-            "white": "#F5E6C8",
-            "brightBlack": "#5C2A2A",
-            "brightRed": "#FF4136",
-            "brightGreen": "#69FF94",
-            "brightYellow": "#FFE033",
-            "brightBlue": "#B4D4FF",
-            "brightPurple": "#FF92DF",
-            "brightCyan": "#A4FFFF",
-            "brightWhite": "#FFFFFF",
-            "cursorColor": "#FFCD00",
-            "selectionBackground": "#8B1A1A"
-        },
-        {
-            "background": "#1E1E2E",
-            "black": "#45475A",
-            "blue": "#89B4FA",
-            "brightBlack": "#585B70",
-            "brightBlue": "#89B4FA",
-            "brightCyan": "#94E2D5",
-            "brightGreen": "#A6E3A1",
-            "brightPurple": "#F5C2E7",
-            "brightRed": "#F38BA8",
-            "brightWhite": "#A6ADC8",
-            "brightYellow": "#F9E2AF",
-            "cursorColor": "#F5E0DC",
-            "cyan": "#94E2D5",
-            "foreground": "#CDD6F4",
-            "green": "#A6E3A1",
-            "name": "Catppuccin Mocha",
-            "purple": "#F5C2E7",
-            "red": "#F38BA8",
-            "selectionBackground": "#585B70",
-            "white": "#BAC2DE",
-            "yellow": "#F9E2AF"
-        },
-        {
-            "background": "#000000",
-            "black": "#0C0C0C",
-            "blue": "#0037DA",
-            "brightBlack": "#767676",
-            "brightBlue": "#3B78FF",
-            "brightCyan": "#61D6D6",
-            "brightGreen": "#16C60C",
-            "brightPurple": "#B4009E",
-            "brightRed": "#E74856",
-            "brightWhite": "#F2F2F2",
-            "brightYellow": "#F9F1A5",
-            "cursorColor": "#FFFFFF",
-            "cyan": "#3A96DD",
-            "foreground": "#FFFFFF",
-            "green": "#13A10E",
-            "name": "Color Scheme 15",
-            "purple": "#881798",
-            "red": "#C50F1F",
-            "selectionBackground": "#FFFFFF",
-            "white": "#CCCCCC",
-            "yellow": "#C19C00"
-        },
-        {
-            "background": "#282A36",
-            "black": "#21222C",
-            "blue": "#BD93F9",
-            "brightBlack": "#6272A4",
-            "brightBlue": "#D6ACFF",
-            "brightCyan": "#A4FFFF",
-            "brightGreen": "#69FF94",
-            "brightPurple": "#FF92DF",
-            "brightRed": "#FF6E6E",
-            "brightWhite": "#FFFFFF",
-            "brightYellow": "#FFFFA5",
-            "cursorColor": "#F8F8F2",
-            "cyan": "#8BE9FD",
-            "foreground": "#F8F8F2",
-            "green": "#50FA7B",
-            "name": "Dracula",
-            "purple": "#FF79C6",
-            "red": "#FF5555",
-            "selectionBackground": "#44475A",
-            "white": "#F8F8F2",
-            "yellow": "#F1FA8C"
-        }
-    ],
-    "tabWidthMode": "titleLength",
-    "themes": [],
-    "useAcrylicInTabRow": true
-}
-```
+✅ Close and reopen Windows Terminal.
 
 ---
 
@@ -718,26 +334,40 @@ Open Windows Terminal Settings (`Ctrl+,`) → **Click the gear icon to open the 
 
 ---
 
-## ❓ Troubleshooting
+## 🔧 Prompt Structure
 
-**Icons showing as weird characters?** → Nerd Font is not installed or not set in Windows Terminal.
+```
+[path] [git branch] [git status] [exit status]     [network] [battery] [time]
+[os] [username]                                              ♥♥♥ Việt Nam
+```
 
-**`Get-PSReadLineKeyHandler` errors?** → Run: `Install-Module PSReadLine -Force -SkipPublisherCheck -Scope CurrentUser`
-
-**Theme not loading in new tabs?** → Ensure only **one** `oh-my-posh init` line exists in `$PROFILE`.
-
-**Still seeing the loading time message?** → Make sure `Clear-Host` comes after `oh-my-posh init` in `$PROFILE`.
+| Segment | Description |
+|---|---|
+| 📁 Path | Current directory, home shown as `~` |
+| 🌿 Git | Branch name, working/staging status |
+| ✅ Exit Status | `♥` on success, `💔` on error |
+| 🌐 Network | Network connection icon |
+| 🔋 Battery | Battery percentage + charging status |
+| ⏱ Exec Time | Duration of the last command |
+| 📅 Date & Time | Current date and time |
+| 💻 OS | Operating system icon |
+| 👤 Username | Current user (+ SSH icon if remote session) |
 
 ---
 
-## 📁 File Reference
+## ❓ Troubleshooting
 
-| File | Description |
-|---|---|
-| `vietnam.omp.json` | Oh My Posh theme (red & yellow) |
-| `config.jsonc` | Fastfetch configuration |
-| `vietnam-small.txt` | ASCII art logo for Fastfetch |
-| `settings.json` | Windows Terminal settings |
+**❌ Icons showing as weird characters instead of icons?**
+→ Nerd Font is not installed or not selected in Windows Terminal. Redo Step 2.
+
+**❌ `Get-PSReadLineKeyHandler` errors on startup?**
+→ Run: `Install-Module PSReadLine -Force -SkipPublisherCheck -Scope CurrentUser`
+
+**❌ Theme not loading when opening a new tab?**
+→ Check that `$PROFILE` has the correct path to `vietnam.omp.json`. Make sure there is **only one** `oh-my-posh init` line.
+
+**❌ Still seeing `Loading personal and system profiles took...`?**
+→ Make sure `Clear-Host` comes **after** the `oh-my-posh init` line in your `$PROFILE`.
 
 ---
 
