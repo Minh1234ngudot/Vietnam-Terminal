@@ -498,7 +498,7 @@ copy "C:\Users\YourUsername\Downloads\vietnam_ascii.txt" "$env:USERPROFILE\.conf
 
 ### Step 7 — (Optional) Apply Vietnam Color Scheme in Windows Terminal
 
-Open Windows Terminal Settings (`Ctrl+,`) → **Open JSON file** press ctrl + A and paste the code below into the settings.json file that you opened earlier:
+Open Windows Terminal Settings (`Ctrl+,`) → **Click the gear icon to open the JSON file**, press Ctrl + A, and paste the code below into the previously opened settings.json file:
 
 ```json
 {
