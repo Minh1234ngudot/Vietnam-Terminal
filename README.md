@@ -92,8 +92,6 @@ notepad $PROFILE
 ```powershell
 Set-Location "C:\Users\YourUsername"
 oh-my-posh init pwsh --config "C:\Users\YourUsername\Downloads\vietnam.omp.json" | Invoke-Expression
-Clear-Host
-fastfetch
 ```
 
 ✅ Nhấn **Ctrl+S** để lưu → đóng Notepad → **restart PowerShell**.
@@ -277,8 +275,6 @@ notepad $PROFILE
 ```powershell
 Set-Location "C:\Users\YourUsername"
 oh-my-posh init pwsh --config "C:\Users\YourUsername\Downloads\vietnam.omp.json" | Invoke-Expression
-Clear-Host
-fastfetch
 ```
 
 ✅ Press **Ctrl+S** to save → close Notepad → **restart PowerShell**.
