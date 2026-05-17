@@ -467,8 +467,6 @@ Add the following (replace `YourUsername` with your actual username):
 ```powershell
 Set-Location "C:\Users\YourUsername"
 oh-my-posh init pwsh --config "C:\Users\YourUsername\Downloads\vietnam.omp.json" | Invoke-Expression
-Clear-Host
-fastfetch
 ```
 
 Save the file and **restart PowerShell**.
