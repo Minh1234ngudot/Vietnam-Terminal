@@ -368,5 +368,5 @@ copy "C:\Users\YourUsername\Downloads\vietnam_ascii.txt" "$env:USERPROFILE\.conf
 ---
 
 <div align="center">
-  Made with ❤️ 🇻🇳
+  Made with ❤️ MinhZ
 </div>
