@@ -1,7 +1,8 @@
 # 🇻🇳 Vietnam Terminal Setup
 
-### Bạn Muốn Terminal Của Bạn Như Thế Này:
+### Bạn Muốn Terminal Của Bạn Như Thế Này?:
 <img width="1248" height="674" alt="image" src="https://github.com/user-attachments/assets/dcdae052-8a2d-4409-b432-dcab061ce3ab" />
+
 
 > Terminal setup với **Oh My Posh** theme Việt Nam — đỏ & vàng chuẩn cờ đỏ sao vàng.
 
@@ -193,6 +194,10 @@ copy "C:\Users\YourUsername\Downloads\vietnam_ascii.txt" "$env:USERPROFILE\.conf
 ---
 
 # 🇬🇧 English Version
+
+### You Want Your Terminal Like This?:
+<img width="1248" height="674" alt="image" src="https://github.com/user-attachments/assets/9a90cfc0-9e6c-4817-a533-dca311c61e09" />
+
 
 > A beautiful terminal setup using **Oh My Posh** with a Vietnam-themed prompt — red & yellow inspired by the Vietnamese flag.
 
