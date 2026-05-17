@@ -182,6 +182,10 @@ copy "C:\Users\YourUsername\Downloads\vietnam_ascii.txt" "$env:USERPROFILE\.conf
 **❌ Vẫn thấy dòng `Loading personal and system profiles took...`?**
 → Đảm bảo trong `$PROFILE` có dòng `Clear-Host` **sau** dòng `oh-my-posh init`.
 
+## 📞 Hỗ trợ
+
+- **Discord:** [Nhấn vào tôi để join server Discord](https://discord.gg/q2DzqWgpTC)
+- **GitHub:** [Nhấn vào tôi để xem repo GitHub](https://github.com/Minh1234ngudot)
 ---
 ---
 
@@ -365,6 +369,10 @@ copy "C:\Users\YourUsername\Downloads\vietnam_ascii.txt" "$env:USERPROFILE\.conf
 **❌ Still seeing `Loading personal and system profiles took...`?**
 → Make sure `Clear-Host` comes **after** the `oh-my-posh init` line in your `$PROFILE`.
 
+## 📞 Support
+
+- **Discord:** [Click me to join me Discord Server](https://discord.gg/q2DzqWgpTC)
+- **GitHub:** [Click me to watch my GitHub Repo](https://github.com/Minh1234ngudot)
 ---
 
 <div align="center">
